@@ -1,3 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base{
+    @font-face {
+      font-family: 'morganite';
+      src: url('../public/fonts/Morganite-Black.woff2') format('.woff2');
+      font-weight: 200;
+
+    }
+}
+
+
 html,
 body {
   padding: 0;
@@ -15,6 +30,13 @@ a {
   box-sizing: border-box;
 }
 
+.technor {
+  
+font-family: 'Technor', sans-serif;
+}
+.clashdisplay{
+  font-family: 'Clash Display', sans-serif;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
