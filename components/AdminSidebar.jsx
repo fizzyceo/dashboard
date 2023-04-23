@@ -3,7 +3,7 @@ import { useState } from 'react';
 import supabase from '../utils/SupabaseCli';
 import { Router, useRouter } from 'next/router';
 
-export default function Sidebar({role}) {
+export default function Sidebar({role,setMenu}) {
   const [toggle,setToggal] = useState(false)
   const router = useRouter()
   const signOutUser = async () => {
@@ -13,7 +13,7 @@ export default function Sidebar({role}) {
   }
   return (
 
-  <div className={`h-full flex flex-col transition-all ${toggle ? 'w-60 ': 'w-12'}`}>
+  <div className={`h-full flex flex-col   transition-all ${toggle ? 'toggled ': 'w-12'}`}>
     <div className='flex-grow flex flex-col relative  '>
       
       <button className='absolute top-[50%] -right-6 mr-1' onClick={()=>setToggal(!toggle)}>
@@ -27,8 +27,18 @@ export default function Sidebar({role}) {
       <div className={`flex flex-col flex-grow bg-slate-800 border-t-2 border-b-2 border-white   py-5 gap-5 ${toggle ? 'items-start px-3' : "items-center"}`}>
 
       <a href={`${role==='admin'? "/Dashboard" :"/Client"}`} className='item flex flex-row gap-3 cursor-pointer items-center bg-green-400 bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
-           <img src="/home.png" alt="" className='w-7 ' /> 
-           <p className={`${!toggle && "hidden"} technor font-bold`}>Home</p>
+           <img src="/worldwide-shipping.png" alt="" className='w-7 ' /> 
+           <p className={`${!toggle && "hidden"} technor font-bold`}>Containers</p>
+        
+        </a>
+      <a href={`${role==='admin'? "/Dashboard" :"/Client"}`} className='item flex flex-row gap-3 cursor-pointer items-center bg-green-400 bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
+           <img src="/zone.png" alt="" className='w-7 ' /> 
+           <p className={`${!toggle && "hidden"} technor font-bold`}>Port Zones</p>
+        
+        </a>
+      <a href={`/Users`} className='item flex flex-row gap-3 cursor-pointer items-center bg-green-400 bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
+           <img src="/group.png" alt="" className='w-7 ' /> 
+           <p className={`${!toggle && "hidden"} technor font-bold`}>Users</p>
         
         </a>
       
@@ -52,49 +62,3 @@ export default function Sidebar({role}) {
   </div>
   );
 }
-{/* <div
-className={`fixed inset-y-0 left-0 z-20 w-64 transition-all duration-300 ease-in-out bg-gray-900 text-white px-8 py-4 ${
-  isSidebarOpen ? 'ml-0' : '-ml-64'
-}`}
->
-<button
-  className="absolute top-0 right-0 mt-2 mr-2 text-white block  focus:outline-none z-30"
-  onClick={toggleSidebar}
->
-<svg
-className={`fill-current h-8 w-8 `}
-viewBox="0 0 24 24"
->
-<path
-d="M6 18L18 6M6 6l12 12"
-stroke="currentColor"
-strokeWidth="2"
-strokeLinecap="round"
-strokeLinejoin="round"
-/>
-</svg>
-
-</button>
-<div className="flex flex-col gap-14  h-full max-w-xs">
-  <h2 className="text-2xl font-bold my-4">LOGO</h2>
-  <nav>
-    <ul>
-      <li className="my-2">
-        
-          <a className="text-gray-300 hover:text-white">Home</a>
-        
-      </li>
-      <li className="my-2">
-        
-          <a className="text-gray-300 hover:text-white">About</a>
-        
-      </li>
-      <li className="my-2">
-        
-          <a className="text-gray-300 hover:text-white">Contact</a>
-        
-      </li>
-    </ul>
-  </nav>
-</div>
-</div> */}

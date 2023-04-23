@@ -46,3 +46,21 @@ font-family: 'Technor', sans-serif;
     background: black;
   }
 }
+.toggled{
+  position: relative;
+  width: 240px;
+
+}
+@media screen and (max-width: 640px) {
+    .toggled{
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      z-index: 100;
+      background: black;
+
+    }
+}

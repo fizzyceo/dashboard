@@ -17,7 +17,7 @@ export default function Client() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-row h-screen w-screen ">
-      <Sidebar/>
+      <Sidebar role={"regular"}/>
      <ClientMain/>
       </div>
 

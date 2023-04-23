@@ -15,7 +15,8 @@ export default function Home() {
     const getuser = async () => {
       const { data, error } = await supabase.auth.getUser();
       if (error) {
-        
+        setLoading(false)
+
         throw error.message;
       
       }
