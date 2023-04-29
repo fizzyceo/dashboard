@@ -4,10 +4,10 @@ import supabase from "../../utils/SupabaseCli"
 
 export default async function handler(req, res) {
 
-    const {data,error} = await supabase.from("profiles").select("*")
+    const {data,error} = await supabase.from("zones").select("*")
     console.log(data);
     if(error) res.status(400).json({error:error.message})
     
-    else res.status(200).json({ Users: data })
+    else res.status(200).json({ Zones: data })
 }
 

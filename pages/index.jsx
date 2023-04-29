@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import supabase from '../utils/SupabaseCli';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Loading from '../components/Loading';
 
 
 export default function Home() {
@@ -42,7 +43,7 @@ export default function Home() {
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
-    });
+    },{confirm:false});
     console.log(data);
     if (error) {
       setError(error.message);
@@ -75,34 +76,47 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    {!loading ?(
-      <main className="  bg-slate-900 w-screen min-h-screen">
-      <h1 className="clashdisplay text-white text-center py-6 text-3xl ">Login Page</h1>
+    {loading && (
+      <Loading/>)}
+      <main className="bg-gradient-to-b from-violet-700 to-blue-800 w-screen min-h-screen ">
+        
+      <h1 className=" z-10 clashdisplay text-white text-center py-6 text-3xl ">LOGIN PAGE</h1>
+      <div className="flex items-center justify-center w-[85%] flex-row flex-wrap sm:flex-nowrap mx-auto py-10 min-h-[450px] rounded-md">
+  <div className="w-full sm:w-1/2 p-4 flex flex-col justify-center items-center bg-gray-400 from-blue-600 to-purple-500  h-[450px] ">
+  <div className=' clashdisplay p-4 flex flex-col justify-center items-center  gap-4 rounded-lg h-[80%]  max-h-fit'>
+    
+    <div className='p-3rounded-lg text-3xl '>
+        Track Your
+        </div>
+    <img src="/loginillus.svg" className='w-[95%] h-[80%]' alt="" />
+    < span className=' technor font-bold text-3xl tracking-wider'>CONTAINER</span>
+    </div>
 
-      <section className="max-w-[475px] rounded-md mt-16 p-4 technor  bg-slate-500  h-fit mx-auto flex justify-center  flex-col gap-5 items-center">
-        <h1 className="text-white font-semibold text-xl">
-          Insert Credentials
+  </div>
+  <div className="w-full sm:w-1/2    p-4 technor  bg-gray-300 text-black  h-[450px] mx-auto flex justify-center  flex-col gap-5 items-center">
+        <h1 className=" font-semibold text-xl">
+            Insert Credentials
         </h1>
         <h2 className="text-red-400">{error} </h2>
 
         <div className="w-full">
-          <h3 className="text-white my-1">Email:</h3>
+          <h3 className="my-1">Email:</h3>
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="text"
             placeholder="Your Email"
-            className="rounded-md w-full py-2 px-2 outline-none focus:border-b-purple-900 focus:border-b-2"
+            className="rounded-md w-full text-white py-2 px-2 outline-none focus:border-b-purple-900 focus:border-b-2"
           />
         </div>
         <div className="w-full">
-          <h3 className="text-white my-1">Password:</h3>
+          <h3 className=" my-1">Password:</h3>
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Your password"
-            className="rounded-md  px-2  w-full py-2 outline-none focus:border-b-purple-900 focus:border-b-2"
+            className="rounded-md text-white px-2  w-full py-2 outline-none focus:border-b-purple-900 focus:border-b-2"
           />
         </div>
         <button
@@ -111,16 +125,14 @@ export default function Home() {
         >
           Login
         </button>
-        <a className="text-white hover:underline" href="/SignUp">
-          vous etes un officier sans compte ?{' '}
+        <a className="text-[#757373] hover:underline" href="/SignUp">
+          You dont have any account?{' '}
         </a>
-      </section>
+  </div>
+</div>
+
     </main>
-    ):(
-      <div className='w-screen h-screen flex items-center justify-center '>
-        <div className='bg-green-400 rounded-full w-7 h-7 animate-pulse'></div>
-      </div>
-    )}
+    
       
     </>
   );

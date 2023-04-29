@@ -16,7 +16,7 @@ export default function Sidebar({role}) {
   <div className={`h-full flex flex-col transition-all ${toggle ? 'w-60 ': 'w-12'}`}>
     <div className='flex-grow flex flex-col relative  '>
       
-      <button className='absolute top-[50%] -right-6 mr-1' onClick={()=>setToggal(!toggle)}>
+      <button className='absolute top-[50%] transform translate-y-[-50%] -right-6 mr-1' onClick={()=>setToggal(!toggle)}>
         <img src="/arrowright.png" className={`${toggle ? "rotate-180" : "rotate-0"} transition-all duration-500`} width={28} alt="" />
          </button>
          <div className='item my-10 flex justify-center  items-center'>

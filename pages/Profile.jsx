@@ -12,7 +12,7 @@ const Profile = () => {
 
   const [nom, setNom] = useState('');
   const [prenom, setPrenom] = useState('');
-  const [role, setRole] = useState('');
+  
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,6 +20,7 @@ const Profile = () => {
 
   
   const [deleteModel, setDeleteModel] = useState(false);
+  const [role, setRole] = useState('');
   const [spotchange, setSpotChange] = useState(false);
   useEffect(() => {
     
@@ -132,17 +133,8 @@ const Profile = () => {
               className="border-b-2 text-white px-1 border-gray-400 hover:border-indigo-700 transition-all py-2"
               value={password}
             />
-            <label htmlFor="NumActe">Role</label>
-            <input
-              type="text"
-              name="NumActe"
-              onChange={(e) => {
-                setSpotChange(true);
-                setRole(e.target.value);
-              }}
-              className="border-b-2 text-white  px-1 border-gray-400 hover:border-indigo-700 transition-all py-2"
-              value={role}
-            />
+            
+            
           </div>
           {spotchange && (
             <button
