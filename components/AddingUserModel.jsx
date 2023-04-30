@@ -37,7 +37,7 @@ const UserInfoModel = ({ isvisible, onClose, generateUsers }) => {
             
 
             if (data) {
-              const inserted = await supabase.from("profiles").insert({
+              const inserted = await supabase.from("user").insert({
                 
                 admin:role,
                 password:password,

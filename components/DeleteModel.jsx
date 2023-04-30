@@ -1,13 +1,13 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import supabase from '../utils/SupabaseCli';
+import supabase, { supabaseSecret } from '../utils/SupabaseCli';
 import Loading from './Loading';
 
-const DeleteModel = ({ isvisible, onClose, containerID ,ownerID,generateContainers,userid,generateUsers,Zoneid,generateZones}) => {
+const DeleteModel = ({ isvisible, onClose, containerID ,ownerID,generateContainers,userid,generateUsers,Zoneid,generateZones,Lobid , generateLobs}) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
+  
   const Delete = async () => {
     setLoading(true);
     if(ownerID && containerID && generateContainers){
@@ -21,13 +21,16 @@ const DeleteModel = ({ isvisible, onClose, containerID ,ownerID,generateContaine
     }
     generateContainers()
   }else if(userid && generateUsers){
-    const { data, error } = await supabase
-      .from('user')
-      .delete()
-      .eq('id', userid)
-    if (error) {
-      setError(error.message);
-      throw error.message;
+    const res = await fetch('../api/DeleteUser', {
+      method: "POST",
+      body: JSON.stringify({ 
+          userid,
+          
+       }),
+    });
+    if(res.status==400){
+      console.log(res.error);
+      setLoading(false)
     }
     generateUsers()
   }else if(Zoneid && generateZones){
@@ -40,6 +43,16 @@ const DeleteModel = ({ isvisible, onClose, containerID ,ownerID,generateContaine
       throw error.message;
     }
     generateZones()
+  }else if(Lobid && generateLobs){
+    const { data, error } = await supabase
+      .from('lob')
+      .delete()
+      .eq('id', Lobid)
+    if (error) {
+      setError(error.message);
+      throw error.message;
+    }
+    generateLobs()
   }
     setLoading(false);
     onClose();
@@ -49,7 +62,9 @@ const DeleteModel = ({ isvisible, onClose, containerID ,ownerID,generateContaine
       onClose();
     }
   };
-
+useEffect(()=>{
+  console.log(supabaseSecret);
+},[])
   if (!isvisible) return null;
   return (
     <div
@@ -66,7 +81,7 @@ const DeleteModel = ({ isvisible, onClose, containerID ,ownerID,generateContaine
         </button>
         <div className="bg-white flex flex-col gap-5 p-5 rounded-md">
           <h1 className="text-center text-black font-semibold text-lg">
-           Are you sure you want to delete this {userid && "user"} {containerID && "container"} {Zoneid && "Zone"}?
+           Are you sure you want to delete this {userid && "user"} {containerID && "container"} {Zoneid && "Zone"} {Lobid && "Lob"}?
           </h1>
           {/**Numéro d’enregistrement, nom, prénom, sexe, date de naissance (heure et jour), le lieu 
   de naissance,

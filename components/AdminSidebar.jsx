@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import supabase from '../utils/SupabaseCli';
+import {GrLocationPin} from 'react-icons/gr';
 import { Router, useRouter } from 'next/router';
 
 export default function Sidebar({role,setMenu}) {
@@ -34,6 +35,11 @@ export default function Sidebar({role,setMenu}) {
       <a href={`/Zones`} className='item flex flex-row gap-3 cursor-pointer items-center bg-green-400 bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
            <img src="/zone.png" alt="" className='w-7 ' /> 
            <p className={`${!toggle && "hidden"} technor font-bold`}>Port Zones</p>
+        
+        </a>
+      <a href={`/Lobs`} className='item flex flex-row gap-3 cursor-pointer items-center bg-green-400 bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
+      <img src="/lob.png" alt="" className='w-7 ' /> 
+           <p className={`${!toggle && "hidden"} technor font-bold`}>Lobs</p>
         
         </a>
       <a href={`/Users`} className='item flex flex-row gap-3 cursor-pointer items-center bg-green-400 bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
