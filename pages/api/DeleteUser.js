@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import supabase, { supabaseSecret } from "../../utils/SupabaseCli"
+import supabase, { supabaseAdmin, supabaseSecret } from "../../utils/SupabaseCli"
 
 export default async function handler(req, res) {
     const {userid} = JSON.parse(req.body);
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error:"problem with the public table"})
   }
   console.log(supabaseSecret);
-  const deleted_from_auth = await supabase.auth.admin.deleteUser(userid,supabaseSecret )
+  const deleted_from_auth = await supabaseAdmin.auth.admin.deleteUser(userid)
   if(deleted_from_auth.error) {
     return res.status(400).json({ error:"problem with the auth table"})
   }
