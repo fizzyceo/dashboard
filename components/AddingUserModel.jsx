@@ -111,6 +111,7 @@ const UserInfoModel = ({ isvisible, onClose, generateUsers }) => {
           </h1>
  
           <p>{error}</p>
+          
           <div className="flex items-center justify-between  technor w-full">
               <label className='text-black' htmlFor="user">Email</label>
               <input

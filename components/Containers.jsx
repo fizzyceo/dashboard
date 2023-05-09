@@ -48,6 +48,20 @@ useEffect(()=>{
     generateUser();
 },[])
 
+const get_container_id =async ()=>{
+  console.log("in");
+  const res = await fetch('../api/getContainers_id', {
+    method: "POST",
+    body: JSON.stringify({ 
+        image_url:"../../backend/0013.jpg"
+     }),
+  });
+
+const data = await res.json()
+if(data){
+console.log(data);
+}
+}
 const init_model = (container)=>{
     setChosenContainer(container)
     setshowContainerModel((model) => !model)
@@ -109,7 +123,7 @@ const DeleteContainer = (containerID,ownerID)=>{
         </div>
       </div>
       <section className='w-[95%] h-[450px] mx-auto mb-10 bg-black '>
-
+              <button onClick={get_container_id} className='bg-white text-black px-3 py-2 rounded-md'>Test Prediction</button>
       </section>
       <InfoModel
         onClose={() => setshowContainerModel(false)}
