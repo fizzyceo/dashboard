@@ -120,7 +120,7 @@ const InfoModel = ({ isvisible, onClose, container }) => {
             </div>
             <button
               onClick={saveChanges}
-              className="bg-violet-700 w-full bg-opacity-90 hover:bg-opacity-100 flex justify-center py-2 rounded-full text-white"
+              className="bg-palet-dark-blue w-full bg-opacity-90 hover:bg-opacity-100 flex justify-center py-2 rounded-full text-white"
             >
               {loadingsave ? (
                 <div className="w-7 h-7 rounded-full animate-ping  bg-white"></div>
@@ -154,7 +154,7 @@ const InfoModel = ({ isvisible, onClose, container }) => {
             </div>
             <button
               onClick={LocateInMap}
-              className="bg-green-500 w-full bg-opacity-90 hover:bg-opacity-100 flex justify-center py-2 rounded-full text-white"
+              className="bg-palet-green w-full bg-opacity-90 hover:bg-opacity-100 flex justify-center py-2 rounded-full text-white"
             >
               {loadingmap ? (
                   <div className="w-7 h-7 rounded-full animate-ping  bg-white"></div>

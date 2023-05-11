@@ -79,7 +79,7 @@ const Profile = () => {
   return (
     <div className="flex flex-row h-screen w-screen "> 
     {role==="admin"?<AdminSidebar role={role}/>: <Sidebar/>}
-    <div className=" flex-grow bg-gradient-to-b clashdisplay from-violet-800 to-blue-900 min-h-screen overflow-hidden">
+    <div className=" flex-grow bg-[#14142B] min-h-screen overflow-hidden">
       
 
       <div className="flex flex-col max-w-md mx-auto gap-10 my-10">
@@ -138,7 +138,7 @@ const Profile = () => {
           </div>
           {spotchange && (
             <button
-              className="w-full py-2 bg-green-500 text-white rounded-full my-2 "
+              className="w-full py-2 bg-palet-green text-white rounded-full my-2 "
               onClick={savingchanges}
             >
               Save Changes

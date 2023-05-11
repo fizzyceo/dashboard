@@ -12,6 +12,7 @@ import DeleteModel from '../components/DeleteModel';
 
 import AddingZoneModel from '../components/AddingZoneModel';
 import ZoneInfoModel from '../components/ZoneInfoModel';
+import { TbSquareRoundedPlusFilled } from 'react-icons/tb';
 //FINISH THIS //////////////////////////////////////////////////////////////////////////////////////////////////
 //ajouter des boutons pour les Creation - Deletion ///////////////////////////////////////////////////////////// 
 // fix the login UI ////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,15 +77,18 @@ const AddZone=()=>{
       {role==="admin"?<AdminSidebar role={role}/>: <Sidebar/>}
 
     
-    <div className='bg-gradient-to-b from-violet-600 to-blue-900 min-h-screen flex-grow'>
+    <div className='bg-[#14142B] min-h-screen flex-grow'>
        
       <div className='flex justify-between p-4'>
         <h2>Zones</h2>
         <h2>Welcome Back, {first_name}</h2>
       </div>
-
+      <div className='flex flex-row justify-start items-center gap-2'>
+        <p  className='p-4 underline-offset-4 underline'>List of Zones</p>
+        <button onClick={AddZone} className='cursor-pointer -top-2 font-semibold flex flex-row items-center justify-center bg-palet-dark-blue    rounded-md p-2 '><p>Create</p> <TbSquareRoundedPlusFilled className='w-7'/> </button>
+      </div>
       <div className='relative p-4'>
-        <button onClick={AddZone} className='absolute left-[50%] transform translate-x-[-50%] cursor-pointer -top-2 font-semibold flex flex-row items-center justify-center bg-purple-500 rounded-full p-4'><p>Create</p> <BsPlus className='w-7'/> </button>
+        
         <div className='w-full m-auto p-4 border rounded-lg bg-white text-black overflow-y-auto'>
           <div className='my-3 p-2 grid  lg:grid-cols-4  grid-cols-2 items-center justify-between cursor-pointer'>
             <span>Type</span>
@@ -97,8 +101,8 @@ const AddZone=()=>{
             {Zones && Zones.map((zone, id) => (
                 <li key={id} className='bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid  lg:grid-cols-4  grid-cols-2 items-center justify-between cursor-pointer'>
                     <div className='flex items-center'>
-                        <div className='bg-purple-100 p-3 rounded-lg'>
-                            <MdOutlinePlace className='text-purple-800' />
+                        <div className='bg-palet-blue bg-opacity-25 p-3 rounded-lg'>
+                            <MdOutlinePlace className='text-palet-dark-blue' />
                         </div>
                         <p className='pl-4'>{zone.type}</p>
                     </div>

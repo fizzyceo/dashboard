@@ -11,6 +11,7 @@ import UserInfoModel from '../components/UserInfoModel';
 import DeleteModel from '../components/DeleteModel';
 import AddingUserModel from '../components/AddingUserModel'
 import Loading from '../components/Loading';
+import { TbSquareRoundedPlusFilled } from 'react-icons/tb';
 //FINISH THIS //////////////////////////////////////////////////////////////////////////////////////////////////
 //ajouter des boutons pour les Creation - Deletion ///////////////////////////////////////////////////////////// 
 // fix the login UI ////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,15 +86,19 @@ const AddUser=()=>{
       {role==="admin"?<AdminSidebar role={role}/>: <Sidebar/>}
 
     
-    <div className='bg-gradient-to-b from-violet-600 to-blue-900 min-h-screen flex-grow'>
+    <div className='bg-[#14142B] min-h-screen flex-grow'>
        
       <div className='flex justify-between p-4'>
         <h2>Users</h2>
         <h2>Welcome Back, {first_name}</h2>
       </div>
-
+      <div className='flex flex-row justify-start items-center gap-2'>
+        <p  className='p-4 underline-offset-4 underline'>List of Users</p>
+        <button onClick={AddUser} className='cursor-pointer -top-2 font-semibold flex flex-row items-center justify-center bg-palet-dark-blue    rounded-md p-2 '><p>Create</p> <TbSquareRoundedPlusFilled className='w-7'/> </button>
+      </div>
+     
       <div className='relative p-4'>
-        <button onClick={AddUser} className='absolute left-[50%] transform translate-x-[-50%] cursor-pointer -top-2 font-semibold flex flex-row items-center justify-center bg-purple-500 rounded-full p-4'><p>Create</p> <BsPlus className='w-7'/> </button>
+        
         <div className='w-full m-auto p-4 border rounded-lg bg-white text-black overflow-y-auto'>
           <div className='my-3 p-2 grid  lg:grid-cols-4  grid-cols-2 items-center justify-between cursor-pointer'>
             <span>email</span>
@@ -106,8 +111,8 @@ const AddUser=()=>{
             {Users && Users.map((user, id) => (
                 <li key={id} className='bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid  lg:grid-cols-4  grid-cols-2 items-center justify-between cursor-pointer'>
                     <div className='flex items-center'>
-                        <div className='bg-purple-100 p-3 rounded-lg'>
-                            <AiOutlineUser className='text-purple-800' />
+                        <div className='bg-palet-blue bg-opacity-25 p-3 rounded-lg'>
+                            <AiOutlineUser className='text-palet-dark-blue' />
                         </div>
                         <p className='pl-4'>{user.email}</p>
                     </div>
@@ -115,7 +120,7 @@ const AddUser=()=>{
                     <p className={`hidden lg:flex w-fit rounded-md p-2 `}>{user.last_name }</p>
 
                     <div className='flex justify-between items-center'>
-                    <p className={` ${user.admin ? "bg-purple-800":"bg-red-500"} flex w-fit text-white rounded-md p-2`}>{user.admin ? "admin": "agent"}</p>
+                    <p className={` ${user.admin ? "bg-palet-dark-blue":"bg-palet-green"} flex min-w-[60px] text-center  text-white rounded-md p-2`}>{user.admin ? "admin": "agent"}</p>
                         <div className='flex gap-3'>
                         <button className='hover:bg-red-500 transition-all p-2  rounded-lg bg-red-300 hover:text-white' onClick={()=>DeleteUser(user.user_id)}>
                         <FiTrash className='hover:text-white'/>

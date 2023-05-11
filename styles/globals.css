@@ -37,6 +37,7 @@ font-family: 'Technor', sans-serif;
 .clashdisplay{
   font-family: 'Clash Display', sans-serif;
 }
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

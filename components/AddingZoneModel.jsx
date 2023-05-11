@@ -113,7 +113,7 @@ const AddingZoneModel = ({ isvisible, onClose, generateZones }) => {
 
             <button
               onClick={Insert}
-              className="bg-violet-700 w-full bg-opacity-90 hover:bg-opacity-100 flex justify-center py-2 rounded-full text-white"
+              className="bg-palet-dark-blue bg-opacity-90 w-full  hover:bg-opacity-100 flex justify-center py-2 rounded-full text-white"
             >
               {loadingsave ? (
                 <div className="w-7 h-7 rounded-full animate-ping  bg-white"></div>

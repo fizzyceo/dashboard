@@ -12,6 +12,11 @@ module.exports = {
     extend: {
       fontFamily:{
         morganite:"morganite"
+      },
+      colors:{
+        'palet-blue':'#00a9d8',
+        'palet-dark-blue':'#0d9edf',
+        'palet-green':'#259b9a'
       }
     },
   },
