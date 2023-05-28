@@ -1,8 +1,8 @@
 
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import supabase from '../utils/SupabaseCli';
-import Loading from './Loading';
+import supabase from '../../utils/SupabaseCli';
+import Loading from '../Loading';
 
 const UserInfoModel = ({ isvisible, onClose, generateUsers }) => {
   const [error, setError] = useState('');

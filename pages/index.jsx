@@ -78,24 +78,26 @@ export default function Home() {
       </Head>
     {loading && (
       <Loading/>)}
-      <main className="bg-gradient-to-b from-violet-700 to-blue-800 w-screen min-h-screen ">
+      <main className="bg-[#14142B] w-screen min-h-screen ">
         
-      <h1 className=" z-10 clashdisplay text-white text-center py-6 text-3xl ">LOGIN PAGE</h1>
+      
+        <img className="  invert mx-auto py-1 w-56  " src="./logo.png" alt="" />
+      
       <div className="flex items-center justify-center w-[85%] flex-row flex-wrap sm:flex-nowrap mx-auto py-10 min-h-[450px] rounded-md">
   <div className="w-full sm:w-1/2 p-4 flex flex-col justify-center items-center bg-gray-400 from-blue-600 to-purple-500  h-[450px] ">
-  <div className=' clashdisplay p-4 flex flex-col justify-center items-center  gap-4 rounded-lg h-[80%]  max-h-fit'>
+  <div className=' text-gray-300 font-sans p-4 flex flex-col justify-center items-center  gap-4 rounded-lg h-[80%]  max-h-fit'>
     
-    <div className='p-3rounded-lg text-3xl '>
-        Track Your
-        </div>
+    
     <img src="/loginillus.svg" className='w-[95%] h-[80%]' alt="" />
-    < span className=' technor font-bold text-3xl tracking-wider'>CONTAINER</span>
+    <div className='p-3rounded-lg text-3xl '>
+        Track Your Containers
+        </div>
     </div>
 
   </div>
   <div className="w-full sm:w-1/2    p-4 technor  bg-gray-300 text-black  h-[450px] mx-auto flex justify-center  flex-col gap-5 items-center">
         <h1 className=" font-semibold text-xl">
-            Insert Credentials
+            Login
         </h1>
         <h2 className="text-red-400">{error} </h2>
 
@@ -125,9 +127,7 @@ export default function Home() {
         >
           Login
         </button>
-        <a className="text-[#757373] hover:underline" href="/SignUp">
-          You dont have any account?{' '}
-        </a>
+
   </div>
 </div>
 

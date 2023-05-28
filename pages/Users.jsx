@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { BsPersonFill, BsPlus, BsThreeDotsVertical } from 'react-icons/bs';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 import {AiOutlineUser } from 'react-icons/ai';
-import InfoModel from '../components/InfoModel'
+
 import supabase from '../utils/SupabaseCli';
 import Sidebar from '../components/Sidebar';
 import AdminSidebar from '../components/AdminSidebar';
 import { FiTrash } from 'react-icons/fi';
-import UserInfoModel from '../components/UserInfoModel';
+import UserInfoModel from '../components/Users/UserInfoModel';
 import DeleteModel from '../components/DeleteModel';
-import AddingUserModel from '../components/AddingUserModel'
+import AddingUserModel from '../components/Users/AddingUserModel'
 import Loading from '../components/Loading';
 import { TbSquareRoundedPlusFilled } from 'react-icons/tb';
 //FINISH THIS //////////////////////////////////////////////////////////////////////////////////////////////////

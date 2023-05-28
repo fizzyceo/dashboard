@@ -44,9 +44,12 @@ def simulation(ID):
   Lngmin,Lngmax:  
   """
   #shouldnt the parking coordinates change and not be the same ? 
-  cord={'Parking_A':[36.7525000,39.7525000,3.0419700,6.0419700],
-        'Parking_B':[36.7525000,39.7525000,3.0419700,6.0419700],
-        'Parking_C':[36.7525000,39.7525000,3.0419700,6.0419700]}
+  cord = {
+    'Parking_A': [41.356549, 41.355253, 2.167908, 2.171459],
+    'Parking_B': [41.355682, 41.354385, 2.167316, 2.170813],
+    'Parking_C': [41.353830, 41.352501, 2.166114, 2.169655]
+}
+
   parking_list = ['Parking_A', 'Parking_B', 'Parking_C']
   parking_ch =random.choice(parking_list)
   print('###########Park:',parking_ch," ###########")

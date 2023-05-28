@@ -13,7 +13,7 @@ export default function Sidebar({role}) {
   }
   return (
 
-  <div className={`h-full flex flex-col transition-all ${toggle ? 'w-60 ': 'w-12'}`}>
+  <div className={`h-full flex  bg-[#24263A] flex-col transition-all ${toggle ? 'w-60 ': 'w-12'}`}>
     <div className='flex-grow flex flex-col relative  '>
       
       <button className='absolute top-[50%] transform translate-y-[-50%] -right-6 mr-1' onClick={()=>setToggal(!toggle)}>
@@ -24,15 +24,15 @@ export default function Sidebar({role}) {
            
         
         </div>
-      <div className={`flex flex-col flex-grow bg-slate-800 border-t-2 border-b-2 border-white   py-5 gap-5 ${toggle ? 'items-start px-3' : "items-center"}`}>
+      <div className={`flex flex-col flex-grow  border-t-2    py-5 gap-5 ${toggle ? 'items-start px-3' : "items-center"}`}>
 
-      <a href={`${role==='admin'? "/Dashboard" :"/Client"}`} className='item flex flex-row gap-3 cursor-pointer items-center bg-green-400 bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
+      <a href={`/Client`} className='item flex flex-row gap-3 cursor-pointer items-center bg-palet-green bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
            <img src="/home.png" alt="" className='w-7 ' /> 
            <p className={`${!toggle && "hidden"} technor font-bold`}>Home</p>
         
         </a>
       
-      <a href='/Profile' className='item flex flex-row gap-3  items-center bg-green-400 cursor-pointer bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
+      <a href='/Profile' className='item flex flex-row gap-3  items-center bg-palet-green cursor-pointer bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
            <img src="/user.png" alt="" className='w-7 ' /> 
            <p className={`${!toggle && "hidden"} technor font-bold`}>Profile</p>
         

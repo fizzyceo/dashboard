@@ -15,17 +15,22 @@ export default function Sidebar({role,setMenu}) {
   }
   return (
 
-  <div className={`h-full flex flex-col bg-[#24263A]  transition-all ${toggle ? 'toggled ': 'w-12'}`}>
+  <div className={`min-h-screen flex flex-col bg-[#24263A]  transition-all ${toggle ? 'toggled ': 'w-12'}`}>
+
     <div className='flex-grow flex flex-col relative  '>
       
-      <button className='absolute top-[50%]  -right-4 mr-1' onClick={()=>setToggal(!toggle)}>
+      <button className='absolute top-[50%] translate-y-1/2  -right-4 mr-1' onClick={()=>setToggal(!toggle)}>
+       
         <img src="/arrowright.png" className={`${toggle ? "rotate-180" : "rotate-0"} transition-all duration-500`} width={28} alt="" />
-         </button>
-         <div className='item my-10 flex justify-center  items-center'>
-           <img src="/logo.png" alt="" className='w-32 invert' /> 
-           
-        
+       
+        </button>
+       
+        <div className='item my-10 flex justify-center  items-center'>
+
+        <img src="/logo.png" alt="" className='w-32 invert' /> 
+
         </div>
+      
       <div className={`flex flex-col flex-grow   border-t-2 border-b-2 border-white   py-5 gap-5 ${toggle ? 'items-start px-3' : "items-center"}`}>
 
       <a href={`${role==='admin'? "/Dashboard" :"/Client"}`} className='item flex flex-row gap-3 cursor-pointer items-center bg-palet-green bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
@@ -38,9 +43,9 @@ export default function Sidebar({role,setMenu}) {
            <p className={`${!toggle && "hidden"} technor font-bold`}>Port Zones</p>
         
         </a>
-      <a href={`/Lobs`} className='item flex flex-row gap-3 cursor-pointer items-center bg-palet-green bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
-      <img src="/lob.png" alt="" className='w-7 ' /> 
-           <p className={`${!toggle && "hidden"} technor font-bold`}>Lobs</p>
+      <a href={`/Localize`} className='item flex flex-row gap-3 cursor-pointer items-center bg-palet-green bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>
+      <GrLocationPin className='invert w-7 h-7 '/>
+           <p className={`${!toggle && "hidden"} technor font-bold`}>Localize</p>
         
         </a>
       <a href={`/Users`} className='item flex flex-row gap-3 cursor-pointer items-center bg-palet-green bg-opacity-0 hover:bg-opacity-100 transition-all w-[90%] rounded-md p-2'>

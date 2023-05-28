@@ -5,6 +5,8 @@ import cv2
 import matplotlib.pyplot as plt
 import easyocr
 import numpy as np
+import re
+import shutil
 # Constants.
 INPUT_WIDTH = 640
 INPUT_HEIGHT = 640
@@ -92,6 +94,7 @@ def post_process(input_image, outputs):
       #Perform non maximum suppression to eliminate redundant, overlapping boxes with lower confidences.
       indices = cv2.dnn.NMSBoxes(boxes, confidences, CONFIDENCE_THRESHOLD, NMS_THRESHOLD)
       for i in indices:
+            
             box = boxes[i]
             left = box[0]
             top = box[1]
@@ -102,13 +105,14 @@ def post_process(input_image, outputs):
             crop_img = input_image[top:top+height, left:left+width]
 
             # Save the cropped image
-            cv2.imwrite(f'./cropped/cropped_image_{i}.jpg', crop_img)         
-            # Draw bounding box.             
-            cv2.rectangle(copy_image , (left, top), (left + width, top + height), BLUE, 3*THICKNESS)
-            # Class label.                      
-            label = "{}:{:.2f}".format(classes[class_ids[i]], confidences[i])             
-            # Draw label.             
-            draw_label(copy_image , label, left, top)
+            if crop_img is not None and crop_img.size > 0:
+              cv2.imwrite(f'./cropped/cropped_image_{i}.jpg', crop_img)         
+              # Draw bounding box.             
+              cv2.rectangle(copy_image , (left, top), (left + width, top + height), BLUE, 3*THICKNESS)
+              # Class label.                      
+              label = "{}:{:.2f}".format(classes[class_ids[i]], confidences[i])             
+              # Draw label.             
+              draw_label(copy_image , label, left, top)
       cv2.imwrite('prediction.jpg', copy_image )
       return copy_image 
 
@@ -151,19 +155,20 @@ def extract_id(image):
   if(text):
     ids = text[0]
     split_text = ids.split(" ", 1)
-
+    print(ids)
     if len(split_text) > 1:
       owner_ID, container_ID = split_text
     else:
-      owner_ID =text[0]
-      container_ID = text[1]
+      owner_ID =re.sub(r'[^a-zA-Z0-9]', '',text[0]) 
+      container_ID = ''
+      if len(text) > 1:
+        container_ID = re.sub(r'[^a-zA-Z0-9]', '', text[1])
+      
 
 
 
     for text in first_two_results:
       cord = text[0]
-
-      
       #extract les cordonnees de x et y [[x:595, y:611], [x:641, y:611], [x:641, y:623], [x:595, y:623]] min et max
       #sort the results output and retreive the text that has the max_x and min_y (BICU 123456  [7])
       x_min, y_min = [int(min(idx)) for idx in zip(*cord)]
@@ -211,20 +216,30 @@ def iterate_cropped_images():
 # Import other necessary modules and functions here
 
 def main(image_url):
-  classes = ['containers']
-  frame = './0013.jpg'
-  image_url = sys.argv[0]
-  input_image = cv2.imread(image_url)
+  
+  frame = './dataset/cont9.jpg'
+  # image_url = sys.argv[0]
+  input_image = cv2.imread(frame)
   net = net_yolo()
   detections = pre_process(input_image, net)
   img = post_process(input_image.copy(), detections)
   imShow('prediction.jpg')
   identified_containers = iterate_cropped_images()
   print(identified_containers)
-
+  folder_path = './cropped/'
+  
+  for file_name in os.listdir(folder_path):
+  
+      file_path = os.path.join(folder_path, file_name)
+  
+      if os.path.isfile(file_path):
+  
+        os.remove(file_path)
+  
 if __name__ == '__main__':
   # Get the image URL from the command-line arguments
-  image_url = sys.argv[1]
+  classes = ['containers']
+  image_url = './dataset/0037.jpg' #sys.argv[1]
 
   # Call the main function with the image URL
   main(image_url)

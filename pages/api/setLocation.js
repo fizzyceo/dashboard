@@ -1,7 +1,13 @@
 import fetch from 'node-fetch';
 
-export default function handler(req, res) {
-  const { container_id } =req.body;
+export default async function handler(req, res) {
+  const { container_id ,ownerID} =JSON.parse(req.body);
+
+  console.log(container_id,ownerID);
+  if (!container_id || typeof container_id !== 'string') {
+    res.status(400).json({ message: 'Invalid or missing container_id' });
+    return;
+  }
   const options = {
     method: 'POST',
     headers: {
@@ -10,20 +16,17 @@ export default function handler(req, res) {
     body: JSON.stringify({ container_id })
 };
 
-  fetch('http://127.0.0.1:5000/Receiver', options)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error('Something went wrong');
-      }
-    })
-    .then(data => {
-      console.log(data);
-      res.status(200).json({ message: 'Data sent successfully' });
-    })
-    .catch(error => {
-      console.error(error,"////////////////");
-      res.status(500).json({ message: 'Error sending data' });
-    });
+try{  
+
+const response = await fetch('http://127.0.0.1:5000/Receiver', options)
+  const data =await response.text();
+  console.log(data);
+  res.status(200).json(data);
+
+}catch(error){
+  console.error(error);
+  res.status(500).json({ message: 'Error sending data' });
+
+}
+  
 }

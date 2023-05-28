@@ -4,10 +4,19 @@ import {FiTrash} from 'react-icons/fi'
 import {AiOutlineContainer } from 'react-icons/ai';
 import {TbSquareRoundedPlusFilled} from 'react-icons/tb'
 import InfoModel from './InfoModel'
-import supabase from '../utils/SupabaseCli';
-import AddingContainerModel from '../components/AddingContainerModel';
-import DeleteModel from './DeleteModel';
+import supabase from '../../utils/SupabaseCli';
+import AddingContainerModel from './AddingContainerModel';
+import DeleteModel from '../DeleteModel';
 import { useRouter } from 'next/router';
+//import Map from '../Map';
+
+//import MapSection from '../MapSection';
+
+import dynamic from 'next/dynamic';
+
+const Map = dynamic(() => import('../Map'), {
+  ssr: false
+});
 const Containers = () => {
     const [showContainerModel, setshowContainerModel] = useState(false);
     const [showAddContainer, setshowAddContainer] = useState(false);
@@ -53,20 +62,26 @@ useEffect(()=>{
     generateUser();
 },[])
 
-const get_container_id =async ()=>{
+const get_container_id = async () => {
   console.log("in");
-  const res = await fetch('../api/getContainers_id', {
-    method: "POST",
-    body: JSON.stringify({ 
-        image_url:"../../backend/0013.jpg"
-     }),
-  });
+  try {
+    const payload = {
+      container_id: "xx515181"
+    };
+    console.log(payload); // Verify the payload before sending the request
+    
+    const res = await fetch('../api/setLocation', {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+    
+    const data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-const data = await res.json()
-if(data){
-console.log(data);
-}
-}
 const init_model = (container)=>{
     setChosenContainer(container)
     setshowContainerModel((model) => !model)
@@ -131,9 +146,7 @@ const DeleteContainer = (containerID,ownerID)=>{
           </ul>
         </div>
       </div>
-      <section className='w-[95%] h-[450px] mx-auto mb-10 bg-black '>
-              <button onClick={get_container_id} className='bg-white text-black px-3 py-2 rounded-md'>Test Prediction</button>
-      </section>
+     
       <InfoModel
         onClose={() => setshowContainerModel(false)}
         isvisible={showContainerModel}

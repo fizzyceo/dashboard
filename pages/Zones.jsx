@@ -7,11 +7,10 @@ import Sidebar from '../components/Sidebar';
 import AdminSidebar from '../components/AdminSidebar';
 import { FiTrash } from 'react-icons/fi';
 
-import UserInfoModel from '../components/UserInfoModel';
 import DeleteModel from '../components/DeleteModel';
 
-import AddingZoneModel from '../components/AddingZoneModel';
-import ZoneInfoModel from '../components/ZoneInfoModel';
+import AddingZoneModel from '../components/Zones/AddingZoneModel';
+import ZoneInfoModel from '../components/Zones/ZoneInfoModel';
 import { TbSquareRoundedPlusFilled } from 'react-icons/tb';
 //FINISH THIS //////////////////////////////////////////////////////////////////////////////////////////////////
 //ajouter des boutons pour les Creation - Deletion ///////////////////////////////////////////////////////////// 

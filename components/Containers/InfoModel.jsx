@@ -1,10 +1,11 @@
 
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import supabase from '../utils/SupabaseCli';
-
+import supabase from '../../utils/SupabaseCli';
+import LocationInfo from '../LocationInfo'
 const InfoModel = ({ isvisible, onClose, container }) => {
   const [error, setError] = useState('');
+  const [showLocation,setShowLocation] = useState(false)
   const [validated, setValidated] = useState(container.valid ? "TRUE": "FALSE");
   const [containerID, setcontainerID] = useState(container.containerID);
   const [ownerID, setownerID] = useState(container.ownerID);
@@ -43,6 +44,7 @@ const InfoModel = ({ isvisible, onClose, container }) => {
   };
   const LocateInMap = ()=>{
     setLoadingmap(true)
+    setShowLocation((model)=>!model)
     setLoadingmap(false)
   }
   if (!isvisible) return null;
@@ -165,6 +167,11 @@ const InfoModel = ({ isvisible, onClose, container }) => {
           </div>
         </div>
       </div>
+      <LocationInfo
+        onClose={() => setShowLocation(false)}
+        isvisible={showLocation}
+        container={container}
+      />
     </div>
   );
 };

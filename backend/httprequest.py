@@ -6,20 +6,7 @@ import json
 
 async def async_send_people(identified_containers):
     SERVER_URL = 'http://localhost:3000'
-    """summary
-        send HTTP request to the server 
-    Args:
-        identified_containers (type): people to send :  [
-            {
-                'first_name':<FIRST_NAME>, 
-                'last_name':<LAST_NAME>,
-                'time':<TIME>
-            }
-        ]
-    """
-    """"""
     data = {"identified_containers": identified_containers}
-
 
     # Converting to JSON 
     
