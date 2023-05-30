@@ -6,10 +6,12 @@ import json
 
 async def async_send_people(identified_containers):
     SERVER_URL = 'http://localhost:3000'
+    print(identified_containers)
     data = {"identified_containers": identified_containers}
 
     # Converting to JSON 
-    
+    print("this is the http data from the receiver")
+    print(data)
     try :
         async with aiohttp.ClientSession() as session:
             encoded_data = json.dumps(data).encode('utf-8')

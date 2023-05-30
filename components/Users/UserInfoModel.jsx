@@ -60,9 +60,7 @@ const UserInfoModel = ({ isvisible, onClose, user,generateUsers }) => {
           X
         </button>
         <div className="bg-white flex flex-col gap-5 p-5 rounded-md">
-          <h1 className="text-center highdisplay text-black font-bold text-lg">
-            user INFORMATIONS 
-          </h1>
+        <h1 className='text-black font-bold italic opacity-60 text-xl text-center'>User's Informations</h1>
  
           <p>{error}</p>
           <div className="flex items-center justify-between  technor w-full">

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic';
-import AdminSidebar from '../components/AdminSidebar'
+import SimulationModel from '../components/SimulationModel';
+import Loading from '../components/Loading';
+import AdminSidebar from '../components/AdminSidebar';
 
 const  CopyMapdynamic= dynamic(() => import('../components/CopyMap'), {
   ssr: false
@@ -13,8 +15,9 @@ const Localize = () => {
     const [longitude,setLongitude] = useState("")
     const [latitude, setLatitude] = useState("")
     const [containerPos,setContainerPos] = useState([])
-
     const [appear,setAppear] = useState(false)
+    const [showSimulationModel,setshowSimulationModel] = useState(false)
+    const [returnedCoordinates,setReturnedCoordinates] = useState([])
     const generateLocation = async()=>{
         const res = await fetch('../api/getLocation', {
             method: "POST",
@@ -31,18 +34,45 @@ const Localize = () => {
         setLatitude(data.latitude)
         setLongitude(data.longitude)
         setContainerPos(pos=>[parseFloat(data.latitude),parseFloat(data.longitude)])
-
+        console.log(containerPos);
         }
     }
+
+    const startingServer= async()=>{
+      
+       setLoading(true)    
+        const res2 = await fetch('../api/sentToServer',{
+        method: "GET"
+      })
+      const res2data = await res2.json();
+      console.log(res2data);
+      setReturnedCoordinates(res2data.coordinatesData)  
+      
+    
+      setshowSimulationModel(model=>!model)
+      setLoading(false)
+      // const res2 = await fetch('../api/sentToServer',{
+      //   method: "GET"
+      // })
+      // const res2data = await res2.json();
+      // console.log(res2data);
+    }
+
+   
     useEffect(()=>{
       setAppear(true)
     },[])
   return (
-    <div className="flex flex-row h-screen w-screen ">
-    <AdminSidebar role={"admin"}/>
+    <div className="flex flex-row min-h-screen w-screen overflow-x-hidden ">
+          <AdminSidebar role={"admin"}/>
+
    
-   
-    <div className='flex justify-center gap-10 flex-col flex-grow bg-[#14142B] items-center'>
+    
+    <div className='flex justify-center gap-10 flex-col flex-grow bg-[#14142B] items-center p-5'>
+        <div className='w-full mx-2 flex justify-between items-center'>
+        <h1>Localize your Container!</h1>
+        <button onClick={startingServer} className='bg-palet-dark-blue p-2 mr-2 rounded-md'>Start Simulation</button>
+        </div>
         <div className='flex flex-row gap-5 justify-center items-center'>
             <input type="text" placeholder='Container ID...' value={containerId} className='rounded-md p-3' onChange={e=> setContainerId(e.target.value)}/>
             <input type="text" placeholder='Owner ID...' value={ownerId} className='rounded-md p-3' onChange={e=> setOwnerId(e.target.value)}/>
@@ -53,10 +83,20 @@ const Localize = () => {
             
             </button>
         </div>
+        
+        
         <div className='flex flex-row w-[80%] justify-center items-center '>
-        {appear &&<CopyMapdynamic containerPosition={containerPos}/> }
+        <CopyMapdynamic showSimulationModel={loading || showSimulationModel } containerPosition={containerPos}/> 
+        
         
         </div>
+    {loading && <Loading/>}
+        <SimulationModel
+        onClose={() => setshowSimulationModel(false)}
+        isvisible={showSimulationModel}
+        ContainersCoordinates={returnedCoordinates}
+        
+      />
     </div>
     </div>
   )

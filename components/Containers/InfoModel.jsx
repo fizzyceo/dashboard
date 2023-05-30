@@ -62,8 +62,8 @@ const InfoModel = ({ isvisible, onClose, container }) => {
           X
         </button>
         <div className="bg-white flex flex-col gap-5 p-5 rounded-md">
-          <h1 className="text-center highdisplay text-black font-bold text-lg">
-            CONTAINER INFORMATIONS 
+          <h1 className='text-black text-center font-bold italic opacity-60 text-xl'>
+          Container's Informations
           </h1>
  
           <p>{error}</p>
@@ -132,6 +132,7 @@ const InfoModel = ({ isvisible, onClose, container }) => {
             </button>
           
           <div className='border-t-2 border-gray-200 py-3 flex flex-col gap-3 justify-center items-center'>
+            <h1 className='text-black font-bold italic opacity-60 text-xl'>Container's Coordinates</h1>
           <div className="flex items-center justify-between  gap-3 w-full">
               <label className='text-black' htmlFor="latitude">latitude </label>
               <input
@@ -154,8 +155,8 @@ const InfoModel = ({ isvisible, onClose, container }) => {
                 placeholder="Num d'acte..."
               />
             </div>
-            <button
-              onClick={LocateInMap}
+            <a
+              href='/Localize'
               className="bg-palet-green w-full bg-opacity-90 hover:bg-opacity-100 flex justify-center py-2 rounded-full text-white"
             >
               {loadingmap ? (
@@ -163,7 +164,7 @@ const InfoModel = ({ isvisible, onClose, container }) => {
               ) : (
                 <p>Locate on Map</p>
               )}
-            </button>
+            </a>
           </div>
         </div>
       </div>

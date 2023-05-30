@@ -51,14 +51,14 @@ function DisplayPosition({containerPosition, map }) {
   }, [map, onMove])
 
   return (
-    <p>
+    <p className="my-2">
       latitude: {position.lat.toFixed(4)}, longitude: {position.lng.toFixed(4)}{' '}
-      <button onClick={onClick}>reset</button>
+      <button className="bg-palet-green rounded-md px-3 py-1 mx-2" onClick={onClick}>reset</button>
     </p>
   )
 }
 
-function ExternalStateExample({containerPosition}) {
+function ExternalStateExample({showSimulationModel,containerPosition}) {
   const [map, setMap] = useState(null)
 
   
@@ -85,7 +85,7 @@ function ExternalStateExample({containerPosition}) {
   )
 
   return (
-    <div>
+    <div className={`${showSimulationModel && "-z-10"}`}>
       {map ? <DisplayPosition containerPosition={containerPosition} map={map} /> : null}
       {displayMap}
     </div>

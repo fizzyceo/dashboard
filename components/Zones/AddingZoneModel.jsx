@@ -60,9 +60,7 @@ const AddingZoneModel = ({ isvisible, onClose, generateZones }) => {
           X
         </button>
         <div className="bg-white flex flex-col gap-5 p-5 rounded-md">
-          <h1 className="text-center highdisplay text-black font-bold text-lg">
-           ADD Zone INFORMATIONS
-          </h1>
+        <h1 className='text-black font-bold italic opacity-60 text-xl text-center'>Fill New Zone's Informations</h1>
  
           <p className='font-semibold text-red-800 text-center'>{error}</p>
           <div className="flex items-center justify-between  gap-3 w-full">

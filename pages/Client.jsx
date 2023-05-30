@@ -16,7 +16,7 @@ export default function Client() {
         <title>Home - Next.js TailwindCSS</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-row h-screen w-screen ">
+      <div className="flex flex-row min-h-screen w-screen ">
       <Sidebar role={"regular"}/>
      <ClientMain/>
       </div>

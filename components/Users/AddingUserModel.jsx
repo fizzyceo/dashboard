@@ -106,9 +106,7 @@ const UserInfoModel = ({ isvisible, onClose, generateUsers }) => {
           {emailsent ? (
             <p>Verification Email has been sent, waiting for your reply!</p>
           ):(<div className="bg-white flex flex-col gap-5 p-5 rounded-md">
-          <h1 className="text-center highdisplay text-black font-bold text-lg">
-           ADD USER INFORMATIONS
-          </h1>
+          <h1 className='text-black font-bold italic opacity-60 text-xl text-center'>Fill New User's Informations</h1>
  
           <p>{error}</p>
           
